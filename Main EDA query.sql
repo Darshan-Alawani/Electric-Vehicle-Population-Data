@@ -1,4 +1,4 @@
---We have succesfully imported the Excel file containing the Electric Vehicle Population Data from 2013 to 2020. Let us first study the data by querying all the columns.
+--We have succesfully imported the Excel file containing the Electric Vehicle Population Data from 2013 to 2023. Let us first study the data by querying all the columns.
 
 SELECT * from Electric_Vehicle_Data;
 
