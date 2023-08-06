@@ -1,4 +1,4 @@
---We have succesfully imported the Excel file containing the Electric Vehicle Population Data from 2013 to 2023. Let us first study the data by querying all the columns.
+--We have successfully imported the Excel file containing the Electric Vehicle Population Data from 2013 to 2023. Let us first study the data by querying all the columns.
 
 SELECT * from Electric_Vehicle_Data;
 
@@ -9,7 +9,7 @@ SELECT * from Electric_Vehicle_Data
 WHERE County is NULL;
 
 
---We do see 3 rows which don't have any values under the column county. We shall remove these blank rows.
+--We do see 3 rows that don't have any values under the column county. We shall remove these blank rows.
 
 DELETE from Electric_Vehicle_Data
 WHERE COUNTY is Null;
@@ -30,7 +30,7 @@ WHERE Model is Null;
 SELECT * from Electric_Vehicle_Data 
 WHERE [Electric Range] = 0;
 
---We see a lot of rows where Electric Range value is blank. These blank values do not hold any meaning as they would imply that the vehicles cannot move even on a full charge. Let us remove those rows as well.
+--We see a lot of rows where the Electric Range value is 0. These 0 values do not hold any meaning as they would imply that the vehicles cannot move even on a full charge. Let us remove those rows as well.
 
 DELETE from Electric_Vehicle_Data
 WHERE [Electric Range] = 0;
@@ -41,7 +41,7 @@ WHERE [Electric Range] = 0;
 SELECT * from Electric_Vehicle_Data 
 
 --After the data cleaning, we now have 78,614 rows. Let us now begin the Exploratory Data Analysis (EDA) process to check for any insights/trends from the dataset.
---We shall check the total number of vehicles registered for each Eelctric Vehicle Type
+--We shall check the total number of vehicles registered for each Electric Vehicle Type
 
 
 SELECT COUNT(VIN) AS Total_Cars, Make
@@ -58,7 +58,7 @@ WHERE [Electric Vehicle Type] = 'Battery Electric Vehicle (BEV)'
 GROUP BY Make
 ORDER BY Total_Cars DESC;
 
---We see that TESLA has the most number of registered cars for the Battery Electric Vehicle (BEV) type with 63185 units regsitered.
+--We see that TESLA has the most number of registered cars for the Battery Electric Vehicle (BEV) type with 63185 units registered.
 --Let us check the auto-maker with the most number of electric vehicles registered.
 
 SELECT COUNT(VIN) AS Total_Cars, Make
@@ -66,15 +66,15 @@ FROM Electric_Vehicle_Data
 GROUP BY Make
 ORDER BY Total_Cars DESC;
 
---We see that TESLA has the most number of regsitered vehicles with 63185 vehicles regsitered beating Nissan, the 2nd highest maker with 11018 vehicles by a huge margin.
---We shall now check the models with the highest electric range. Electric range is the maximum distance a vehicle can travel on a single charge of the battery.
+--We see that TESLA has the most number of registered vehicles with 63185 vehicles registered beating Nissan, the 2nd highest maker with 11018 vehicles by a huge margin.
+--We shall now check the models with the highest electric range. The electric range is the maximum distance a vehicle can travel on a single charge of the battery.
 
 SELECT Max([Electric Range]) AS Max_Range, Model, Make
 FROM Electric_Vehicle_Data
 GROUP BY Model, Make
 ORDER BY Max_Range DESC;
 
---We see that Tesla Model S has the highest range out of all the models present with a staggering range of 337 kms.
+--We see that Tesla Model S has the highest range out of all the models present with a staggering range of 337 km.
 --Let us check the states where we see the most number of electric vehicle users within the United States of America
 
 SELECT COUNT(VIN) AS Total_Cars, State
@@ -82,7 +82,7 @@ FROM Electric_Vehicle_Data
 GROUP BY State
 ORDER BY Total_Cars DESC;
 
---We see Washington (WA) has the most number of regsitered electric vehicle users with 138464 cars regsitered. That is a significant number as the next state California (CA) has only 91 electric vehicle users.
+--We see Washington (WA) has the most number of registered electric vehicle users with 138464 cars registered. That is a significant number as the next state California (CA) has only 91 electric vehicle users.
 --Let us now check the counties in Washington state where the most number of cars are used.
 
 SELECT COUNT(VIN) AS Total_Cars, County
@@ -90,7 +90,7 @@ FROM Electric_Vehicle_Data
 GROUP BY County
 ORDER BY Total_Cars DESC;
 
---We see King County has the most number of regsitered electric vehicle users with 72919 cars regsitered. Let us check the same for most number of vehicles in cities in Washington.
+--We see King County has the most number of registered electric vehicle users with 72919 cars registered. Let us check the same for the most number of vehicles in cities in Washington.
 
 SELECT COUNT(VIN) AS Total_Cars, City
 FROM Electric_Vehicle_Data
@@ -99,7 +99,7 @@ GROUP BY City
 ORDER BY Total_Cars DESC;
 
 --We see Seattle having the most number of electric vehicles with 13970 vehicles registered.
---Let us now check the electric vehicle population per electric utility. Electric utility is the company that is involved in electrical energy distribution to the public.
+--Let us now check the electric vehicle population per electric utility. The electric utility is the company that is involved in electrical energy distribution to the public.
 
 SELECT COUNT(VIN) AS Total_Cars, [Electric Utility], Make
 FROM Electric_Vehicle_Data
